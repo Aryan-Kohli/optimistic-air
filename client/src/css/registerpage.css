@@ -1,0 +1,331 @@
+.registerpage section {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    overflow: hidden;
+    /* so that one on the other */
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: url('../pics/bg3.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: animateBg 5s linear infinite;
+}
+
+.registerpage * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.registerpage .login-box {
+    position: relative;
+    left: 10px;
+    width: 550px;
+    height: 600px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    opacity: 0;
+    animation: slideLft 1s ease forwards;
+    animation-delay: .8s;
+}
+
+.registerpage h2 {
+    /* margin-top: -50px; */
+    font-size: 2em;
+    color: #eaeaea;
+    text-align: center;
+}
+
+.registerpage .input-box {
+    position: relative;
+    width: 230px;
+    margin: 20px 0px;
+    border-bottom: 2px solid #eaeaea;
+}
+
+.registerpage .input1-box {
+    position: relative;
+    width: 480px;
+    margin: 20px 0px;
+    border-bottom: 2px solid #eaeaea;
+}
+
+.registerpage .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #eaeaea;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.registerpage .input1-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #eaeaea;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.registerpage .input-box input:focus~label,
+.registerpage .input-box input:valid~label {
+    top: -5px;
+}
+
+.registerpage .input1-box input:focus~label,
+.registerpage .input1-box input:valid~label {
+    top: -5px;
+}
+
+.registerpage .homebtn a {
+    color: rgb(28, 25, 25);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.registerpage .homebtn {
+    padding: 15px 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: none;
+    font-size: 17px;
+    background: rgba(255, 255, 255, 0.286);
+    opacity: 0;
+    animation: slideup 1s ease forwards;
+    animation-delay: .5s;
+}
+
+.registerpage .homebtn:hover {
+    font-size: 18px;
+    background-color: rgba(252, 252, 252, 0.583);
+}
+
+.registerpage .input-box input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #eaeaea;
+    padding: 0 35px 0 5px;
+}
+
+.registerpage .input-box .icon {
+    position: absolute;
+    right: 8px;
+    color: #eaeaea;
+    font-size: 1.2em;
+    line-height: 60px;
+}
+
+.registerpage .input1-box input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #eaeaea;
+    padding: 0 35px 0 5px;
+}
+
+.registerpage .input1-box .icon {
+    position: absolute;
+    right: 8px;
+    color: #eaeaea;
+    font-size: 1.2em;
+    line-height: 60px;
+}
+
+.registerpage .remember-forgot {
+    margin: -15px 0 15px;
+    font-size: .9em;
+    color: #eaeaea;
+    display: flex;
+    justify-content: space-between;
+}
+
+.registerpage .remember-forgot label input {
+    margin-right: 3px;
+}
+
+.registerpage .remember-forgot a {
+    color: #eaeaea;
+    text-decoration: none;
+}
+
+.registerpage .remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.registerpage .submit {
+    width: 100%;
+    height: 40px;
+    background-color: rgba(11, 43, 132, 0.292);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #eaeaea;
+    font-weight: 700;
+}
+
+.registerpage .submit:hover {
+    width: 100%;
+    height: 40px;
+    background-color: rgba(21, 65, 187, 0.48);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1em;
+    color: rgb(68, 118, 193);
+    font-weight: 700;
+}
+
+.registerpage .register-link {
+    font-size: .9em;
+    color: #eaeaea;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.registerpage .register-link p a {
+    color: #eaeaea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.registerpage .register-link a:hover {
+    text-decoration: underline;
+}
+
+@media(max-width: 344px) {
+    .registerpage .login-box {
+        width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+    }
+
+    .registerpage .input-box {
+        width: 290px;
+    }
+}
+
+.registerpage .box1 {
+    color: #eaeaea;
+}
+
+.registerpage h1 {
+    font-size: 65px;
+    padding: 30px;
+    padding-top: 20px;
+}
+
+.registerpage h3 {
+    font-size: 25px;
+    padding-left: 30px;
+    font-weight: 400;
+}
+
+.registerpage .goo {
+    padding-top: 10px;
+}
+
+.registerpage .sidep {
+    padding-left: 30px;
+    padding-top: 90px;
+}
+
+/* @keyframes slideLeftReg {
+    0% {
+        transform: translate(300px, -300px) scale(0) rotate(-45deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1) rotate(-45deg);
+        opacity: 1;
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translate(-300px, 300px) scale(0) rotate(-45deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1) rotate(-45deg);
+        opacity: 1;
+    }
+} */
+
+@keyframes slideLft {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideryt {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideup {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slidedown {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.registerpage .new {
+    display: flex;
+    gap: 20px;
+}

@@ -1,0 +1,356 @@
+.loginpage section {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    overflow: hidden;
+
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: url('../pics/bg3.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: animateBgloginpage 5s linear infinite;
+}
+
+ /* @keyframes animateBgloginpage {
+    100% {
+        filter: hue-rotate(360deg);
+    }
+} */
+
+.loginpage * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.loginpage .box1 {
+    position: relative;
+    left: 60px;
+    width: 700px;
+    height: 450px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    opacity: 0;
+    animation: sliderytloginpage 1s ease forwards;
+    animation-delay: .8s;
+}
+
+.loginpage .login-box {
+    position: relative;
+    left: 60px;
+    width: 400px;
+    height: 450px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    opacity: 0;
+    animation: slideLftloginpage 1s ease forwards;
+    animation-delay: .8s;
+}
+
+.loginpage h2 {
+    font-size: 2em;
+    color: #eaeaea;
+    text-align: center;
+}
+
+.loginpage .input-box {
+    position: relative;
+    width: 310px;
+    margin: 30px 0px;
+    border-bottom: 2px solid #eaeaea;
+}
+
+.loginpage .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #eaeaea;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.loginpage .input-box input:focus~label,
+.loginpage .input-box input:valid~label {
+    top: -5px;
+}
+
+.loginpage .homebtn a {
+    color: rgb(28, 25, 25);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.loginpage .homebtn {
+    padding: 15px 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: none;
+    font-size: 17px;
+    background: rgba(255, 255, 255, 0.286);
+    opacity: 0;
+    animation: slideuploginpage 1s ease forwards;
+    animation-delay: .5s;
+}
+
+.loginpage .homebtn:hover {
+    font-size: 18px;
+    background-color: rgba(252, 252, 252, 0.583);
+}
+
+.loginpage .input-box input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #eaeaea;
+    padding: 0 35px 0 5px;
+}
+
+.loginpage .input-box .icon {
+    position: absolute;
+    right: 8px;
+    color: #eaeaea;
+    font-size: 1.2em;
+    line-height: 60px;
+}
+
+.loginpage .remember-forgot {
+    margin: -15px 0 15px;
+    font-size: .9em;
+    color: #eaeaea;
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginpage .remember-forgot label input {
+    margin-right: 3px;
+}
+
+.loginpage .remember-forgot a {
+    color: #eaeaea;
+    text-decoration: none;
+}
+
+.loginpage .remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.loginpage .submit {
+    width: 100%;
+    height: 40px;
+    background-color: rgba(11, 43, 132, 0.292);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #eaeaea;
+    font-weight: 700;
+}
+
+.loginpage .submit:hover {
+    width: 100%;
+    height: 40px;
+    background-color: rgba(21, 65, 187, 0.48);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1em;
+    color: rgb(207, 120, 120);
+    font-weight: 700;
+}
+
+.loginpage .register-link {
+    font-size: .9em;
+    color: #eaeaea;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.loginpage .register-link p a {
+    color: #eaeaea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.loginpage .register-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 344px) {
+    .loginpage .login-box {
+        width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+    }
+
+    .loginpage .input-box {
+        width: 290px;
+    }
+}
+
+.loginpage .box1 {
+    color: #eaeaea;
+}
+
+.loginpage .rhombus3 {
+    position: absolute;
+    top: -35%;
+    left: -15%;
+    width: 400px;
+    height: 400px;
+    transform: rotate(45deg);
+    background: rgba(255, 255, 255, 0.201);
+    opacity: 0;
+    animation: sliderightloginpage 1s ease forwards;
+    animation-delay: .5s;
+}
+
+.loginpage .rhombus {
+    position: absolute;
+    top: -35%;
+    right: -15%;
+    width: 400px;
+    height: 400px;
+    transform: rotate(45deg);
+    background: rgba(255, 255, 255, 0.201);
+    opacity: 0;
+    animation: slideLeftloginpage 1s ease forwards;
+    animation-delay: .5s;
+}
+
+.loginpage .rhombus2 {
+    position: absolute;
+    bottom: -35%;
+    right: -15%;
+    width: 400px;
+    height: 400px;
+    transform: rotate(45deg);
+    background: rgba(255, 255, 255, 0.201);
+    opacity: 0;
+    animation: slideLeftloginpage 1s ease forwards;
+    animation-delay: .5s;
+}
+
+.loginpage .rhombus4 {
+    position: absolute;
+    bottom: -35%;
+    left: -15%;
+    width: 400px;
+    height: 400px;
+    transform: rotate(45deg);
+    background: rgba(255, 255, 255, 0.201);
+    opacity: 0;
+    animation: sliderightloginpage 1s ease forwards;
+    animation-delay: .5s;
+}
+
+.loginpage h1 {
+    font-size: 65px;
+    padding: 30px;
+    padding-top: 20px;
+}
+
+.loginpage h3 {
+    font-size: 25px;
+    padding-left: 30px;
+    font-weight: 400;
+}
+
+.loginpage .goo {
+    padding-top: 10px;
+}
+
+.loginpage .sidep {
+    padding-left: 30px;
+    padding-top: 90px;
+}
+
+ @keyframes slideLeftloginpage {
+    0% {
+        transform: translate(300px, -300px) scale(0) rotate(-45deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1) rotate(-45deg);
+        opacity: 1;
+    }
+}
+ @keyframes sliderightloginpage {
+    0% {
+        transform: translate(-300px, 300px) scale(0) rotate(-45deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1) rotate(-45deg);
+        opacity: 1;
+    }
+}
+
+ @keyframes slideLftloginpage {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+ @keyframes sliderytloginpage {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+ @keyframes slideuploginpage {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+ @keyframes slidedownloginpage {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

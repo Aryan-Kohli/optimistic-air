@@ -1,0 +1,57 @@
+.testpagemain{
+    /* background: rgb(86, 86, 113); */
+    color:rgb(0,0,106);
+    /* background:linear-gradient(135deg,white 5% ,rgb(49,49,132) 5%,rgb(49, 49, 132) 79%,rgb(231, 231, 242) 5%); */
+}
+.QuestionsDiv {
+    color:rgb(0, 0, 106);
+    font-family: cursive;
+    /* background-color: white; */
+    
+}
+.questions{
+    font-size:2rem;
+    font-family: cursive;
+    /* background-color: black; */
+}
+#listenbtn{
+    color:black;
+    width:55px;
+}
+.note{
+    font-size: 1.2rem;
+    font-family: cursive;
+}
+.head{
+    font-family: cursive;
+}
+.btn2{
+    background-color: rgb(88, 71, 240);
+    color:rgb(255, 255, 255);
+    font-family: cursive;
+    font-size: 1.8rem;
+    row-gap: 10px;
+    font-weight: 400;
+    margin-inline: 20px;
+    /* font-family: cursive; */
+}
+.appvide {
+    display: flex;
+        justify-content: center;
+        align-items: center;
+/* margin-left: auto; */
+    /* margin-right: auto; */
+    /* margin: auto; */
+    /* width: 50%; */
+}
+.videopart{
+    border:2px solid black;
+    /* margin-left: 50% */
+}
+.testpagemain{
+
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+    background-size: 10px 10px;
+}
