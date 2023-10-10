@@ -288,7 +288,7 @@
 }
 
 /* footer */
-.indexpage footer {
+.indexpage #foot {
     width: 100%;
     position: absolute;
     /* bottom:0;  */
@@ -364,6 +364,9 @@
     border: 0;
     outline: none;
 }
+.indexpage form input::placeholder {
+    color: rgba(255, 255, 255, 0.653);
+}
 
 .indexpage form button {
     background: transparent;
@@ -400,14 +403,17 @@
 .indexpage .copyright {
     text-align: center;
 }
+#num {
+    font-size: 15px;
+}
 
 .indexpage .underline {
+    margin-top: 7px;
     width: 100%;
     height: 5px;
     background: #767676;
     border-radius: 3px;
     position: absolute;
-    top: 25px;
     left: 0;
     overflow: hidden;
 }
@@ -444,11 +450,16 @@
 .indexpage .sec {
     background-color: #2a2a72;
     background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
-    border-radius: 15% 60% 90% 30% / 90% 30% 70% 70%;
+    border-radius: 20% 70% 90% 30% / 30% 30% 70% 70%;
+    margin-bottom: 60px;
 }
 
 .indexpage .test {
     margin-left: 35%;
+}
+
+.bold {
+    font-weight: bolder;
 }
 
 .indexpage .text {
@@ -470,6 +481,8 @@
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
+    margin-top: 10px;
+
 }
 
 .indexpage .rules {
@@ -483,23 +496,23 @@
 }
 
 .indexpage .inrules {
-    padding-left: 17px;
+    padding-left: 100px;
     display: flex;
-    color: white;
+    /* color: white; */
     /* color: #000; */
     flex-direction: row;
 }
 
 .indexpage .notes {
-    padding-left: 90px;
+    padding-left: 138px;
     /* color: rgba(255, 255, 6, 0.936); */
-    color: white;
+    color:rgba(255, 255, 6, 0.936);
 }
 
 .indexpage .warning {
-    padding-left: 90px;
+    padding-left: 140px;
     /* color: rgba(255, 255, 6, 0.936); */
-    color: wheat;
+    color: rgba(255, 255, 6, 0.936);
 }
 .indexpage .setblack{
     color: black !important;
@@ -519,7 +532,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 50px;
+    /* margin-bottom: 40px; */
     box-shadow: 5px 5px 5px rgb(55, 46, 137);
 }
 

@@ -15,7 +15,7 @@ export default function indexpage(props) {
             OptimisticAir
           </a>
           <nav className="navbar">
-            <a href="#" style={{ "--i": "1" }} className="active">
+            <a href="#" style={{ "--i": "1" }}>
               Home
             </a>
             <a href="#testsec" style={{ "--i": "3" }}>
@@ -48,8 +48,8 @@ export default function indexpage(props) {
         </header>
         <section className="home">
           <div className="home-content">
-            <h1>Dealing with Depression?</h1>
-            <h3>Lets Find Out</h3>
+            <h1 className="bold">Dealing with Depression?</h1>
+            <h3 className="bold">Lets Find Out!!</h3>
             <p>
               Hello, our model primarily forecasts whether you or your close
               ones may be experiencing depression. Please keep in mind that the
@@ -71,13 +71,13 @@ export default function indexpage(props) {
         <section className="testsec" id="testsec">
           <div className="sec">
             <div className="quiz">
-              <h1 className="test">Depression Test!!</h1>
+              <h1 className="test bold">Depression Test!!</h1>
             </div>
             <div className="second">
               <img className="depression" alt="pic" src={pic2} />
               <div className="rules">
                 <div className="inside">
-                  <h2>What is the quiz about?</h2>
+                  <h2 className="bold">What is the quiz about?</h2>
                   <img
                     width={50}
                     height={50}
@@ -87,8 +87,8 @@ export default function indexpage(props) {
                 </div>
                 <div className="inrules">
                   <section>
-                    <h1>01</h1>
-                    <h3>Why should you take this test?</h3>
+                    <h1 className="bold">01</h1>
+                    <h3 className="bold">Why should you take this test?</h3>
                     <ul>
                       <li>
                         <p>
@@ -111,8 +111,8 @@ export default function indexpage(props) {
                     </ul>
                   </section>
                   <section>
-                    <h2>02</h2>
-                    <h3>How to take a Test ?</h3>
+                    <h2 className="bold">02</h2>
+                    <h3 className="bold">How to take a Test ?</h3>
                     <ul>
                       <p></p>
                       <li>
@@ -133,7 +133,7 @@ export default function indexpage(props) {
                   </section>
                 </div>
                 <div>
-                  <h1 className="notes">Note:</h1>
+                  <h2 className="notes">Note:</h2>
                   <p className="warning">
                     This quiz is <span>NOT</span> intended for diagnostic
                     purposes. The diagnosis of mental health disorders must be
@@ -144,7 +144,7 @@ export default function indexpage(props) {
                 </div>
                 <div className="button">
                   <Link to="/test" className="butt">
-                    Take Test
+                 Take Test
                   </Link>
                 </div>
                 <div></div>
@@ -177,7 +177,7 @@ export default function indexpage(props) {
               <p>ADGITM</p>
               <p>Shastri Park,New Delhi</p>
               <p className="email-id">artist@gmail.com</p>
-              <h4>+91-001123456</h4>
+              <h4 id = "num">+91-001123456</h4>
             </div>
             <div className="col">
               <h3>
@@ -191,17 +191,17 @@ export default function indexpage(props) {
                   <a href>Home</a>
                 </li>
                 <li>
-                  <a href="#testsec" className="setblack">
+                  <a href="#testsec">
                     Take Test
                   </a>
                 </li>
                 <li>
-                  <a href="#foot" className="setblack">
+                  <a href="#foot">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <Link to="/login" className="setblack">
+                  <Link to="/login">
                     Account
                   </Link>
                 </li>
