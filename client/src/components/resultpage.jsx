@@ -74,12 +74,92 @@ export default function resultpage(props) {
     const wordsmap = {};
     console.log(props.data.transcript_string);
     const allwords = data_audio.split(/\s+/);
+    // for (const ekword of allwords) {
+    //   if (arr.includes(ekword)) {
+    //     if (wordsmap[ekword]) {
+    //       wordsmap[ekword]++;
+    //     } else {
+    //       wordsmap[ekword] = 1;
+    //     }
+    //   }
+    // }
     for (const ekword of allwords) {
-      if (arr.includes(ekword)) {
+      if (
+        ekword === "irritated" ||
+        ekword === "yes" ||
+        ekword === "dumb" ||
+        ekword === "unhappy" ||
+        ekword === "Dukhi" ||
+        ekword === "murkh" ||
+        ekword === "bekar" ||
+        ekword === "numb" ||
+        ekword === "exhausted" ||
+        ekword === "exhaust"
+      ) {
         if (wordsmap[ekword]) {
           wordsmap[ekword]++;
         } else {
           wordsmap[ekword] = 1;
+        }
+      } else if (
+        ekword === "suffocating" ||
+        ekword === "anymore" ||
+        ekword === "couldn't" ||
+        ekword === "couldnot" ||
+        ekword === "useless" ||
+        ekword === "sad" ||
+        ekword === "saddest" ||
+        ekword === "loneliness" ||
+        ekword === "chidha" ||
+        ekword === "akelapan" ||
+        ekword === "bekar" ||
+        ekword === "sabsedukhi" ||
+        ekword === "trouble" ||
+        ekword === "noone" ||
+        ekword === "neendnhi" ||
+        ekword === "zero" ||
+        ekword === "down" ||
+        ekword === "unmotivated" ||
+        ekword === "isolated" ||
+        ekword === "isolate"
+      ) {
+        if (wordsmap[ekword]) {
+          wordsmap[ekword] += 2;
+        } else {
+          wordsmap[ekword] = 2;
+        }
+      } else if (
+        ekword === "lonely" ||
+        ekword === "empty" ||
+        ekword === "darkness" ||
+        ekword === "alone" ||
+        ekword === "guilty" ||
+        ekword === "worthless" ||
+        ekword === "killed" ||
+        ekword === "meaningless" ||
+        ekword === "burden" ||
+        ekword === "disappear" ||
+        ekword === "vanish" ||
+        ekword === "akela" ||
+        ekword === "ghutan" ||
+        ekword === "khali" ||
+        ekword === "andhera" ||
+        ekword === "andherapan" ||
+        ekword === "Gayab" ||
+        ekword === "vyarth" ||
+        ekword === "aatmhatya" ||
+        ekword === "marne" ||
+        ekword === "insomania" ||
+        ekword === "killing" ||
+        ekword === "nobody" ||
+        ekword === "struggling" ||
+        ekword === "sadness" ||
+        ekword === "kill"
+      ) {
+        if (wordsmap[ekword]) {
+          wordsmap[ekword] += 3;
+        } else {
+          wordsmap[ekword] = 3;
         }
       }
     }
@@ -90,12 +170,10 @@ export default function resultpage(props) {
     }
     // console.log(wordsdata);
 
-    const ppi = (ans / 24) * 100;
+    const ppi = (ans / 85) * 100;
     setWorddata(ppi);
     console.log(ppi);
     setLoad(true);
-    // i am currently using on the basis of max 22 words are spoken by a depressed person
-    // console.log(percentage);
   }, []);
 
   return (

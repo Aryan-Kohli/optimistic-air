@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import "../css/registerpage.css";
 export default function registerpage() {
@@ -10,6 +10,7 @@ export default function registerpage() {
   const [phoneno, setPhoneno] = useState("");
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
+  const [gotologin, setgotologin] = useState(false);
 
   async function registerUser(ev) {
     ev.preventDefault();
@@ -24,9 +25,13 @@ export default function registerpage() {
         age,
       });
       alert("registered Successfully");
+      setgotologin(true);
     } catch (e) {
-      alert("not regsitered");
+      alert("not registered");
     }
+  }
+  if (gotologin) {
+    return <Navigate to="/login" replace={true} />;
   }
   return (
     <div className="registerpage">
