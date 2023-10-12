@@ -17,7 +17,7 @@ app.use(cookieParser());
 mongoose.connect(process.env.MONGO_URL);
 app.use(cors({
     credentials:true,
-    origin:"https://optimistic-air.netlify.app"
+    origin:"http://localhost:5173/"
 }))
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'https://optimistic-air.netlify.app');
