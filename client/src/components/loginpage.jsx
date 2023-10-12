@@ -47,7 +47,7 @@ export default function loginpage(props) {
             <i className="bx bx-home-alt-2" />
             Home
           </button>
-          <h1>Hi There👋🏻</h1>
+          <h1 className="bold">Hi There👋🏻</h1>
           <h3>Welcome onboard !!</h3>
           <br />
           <h3>Get into your profile and see your dashboard</h3>
@@ -57,7 +57,7 @@ export default function loginpage(props) {
         </div>
         <div className="login-box">
           <form onSubmit={loginUser} id="loginform">
-            <h2>Login</h2>
+            <h2 className="bold">Login</h2>
             <div className="input-box">
               <span className="icon">
                 <ion-icon name="person" />
@@ -93,7 +93,7 @@ export default function loginpage(props) {
               Login
             </button>
             <Link to="/register" className="register-link">
-              <p>
+              <p className = "margin" >
                 Dont't have an account? <a href="#">Register</a>
                 <br />
               </p>
