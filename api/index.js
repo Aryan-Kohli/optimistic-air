@@ -16,7 +16,7 @@ app.use(cookieParser());
 mongoose.connect(process.env.MONGO_URL);
 app.use(cors({
     credentials:true,
-    origin:"http://localhost:5173"
+    origin:"https://optimistic-air.netlify.app/"
 }))
 app.post('/register',async (req,resp)=>{
     const {firstname,
