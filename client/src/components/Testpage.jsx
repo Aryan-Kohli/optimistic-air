@@ -18,6 +18,7 @@ function Testpage(props) {
   const [test_started, setTestStarted] = useState(false);
   const [count, setCount] = useState(0);
   const [result, setResult] = useState("");
+  const [live, setlive] = useState("");
   //video states
   const videoRef = useRef();
   const canvasRef = useRef();
@@ -87,9 +88,9 @@ function Testpage(props) {
   const [stop, makestop] = useState(true);
   // const emotions = [];
   const [emotions, setEmotion] = useState([]);
-  // useEffect(() => {
-  //   props.setemotion(emotions);
-  // });
+  useEffect(() => {
+    setlive(transcript);
+  });
   const faceMyDetect = () => {
     let intervalId;
     const stopDetection = () => {
@@ -394,6 +395,9 @@ function Testpage(props) {
             </div>
           </div>
           <br />
+          <div className="row">
+            <h1>{live}</h1>
+          </div>
           <div className="row">
             <div className="col-md-6">
               <div className="row">

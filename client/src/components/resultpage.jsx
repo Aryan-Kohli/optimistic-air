@@ -6,7 +6,7 @@ import Emotionchart from "./emotionChart";
 import WordsChart from "./Wordschart";
 // imort {Link}
 export default function resultpage(props) {
-  if (props.login === false) {
+  if (props.login == false) {
     return <Navigate to="/login" replace={true} />;
   }
   const emotiondata = props.data.allemotions_array;
@@ -72,7 +72,7 @@ export default function resultpage(props) {
     ];
     var ans = 0;
     const wordsmap = {};
-    console.log(props.data.transcript_string);
+    console.log("transcipt is", props.data.transcript_string);
     const allwords = data_audio.split(/\s+/);
     // for (const ekword of allwords) {
     //   if (arr.includes(ekword)) {
@@ -85,16 +85,16 @@ export default function resultpage(props) {
     // }
     for (const ekword of allwords) {
       if (
-        ekword === "irritated" ||
-        ekword === "yes" ||
-        ekword === "dumb" ||
-        ekword === "unhappy" ||
-        ekword === "Dukhi" ||
-        ekword === "murkh" ||
-        ekword === "bekar" ||
-        ekword === "numb" ||
-        ekword === "exhausted" ||
-        ekword === "exhaust"
+        ekword == "irritated" ||
+        ekword == "yes" ||
+        ekword == "dumb" ||
+        ekword == "unhappy" ||
+        ekword == "Dukhi" ||
+        ekword == "murkh" ||
+        ekword == "bekar" ||
+        ekword == "numb" ||
+        ekword == "exhausted" ||
+        ekword == "exhaust"
       ) {
         if (wordsmap[ekword]) {
           wordsmap[ekword]++;
@@ -102,26 +102,26 @@ export default function resultpage(props) {
           wordsmap[ekword] = 1;
         }
       } else if (
-        ekword === "suffocating" ||
-        ekword === "anymore" ||
-        ekword === "couldn't" ||
-        ekword === "couldnot" ||
-        ekword === "useless" ||
-        ekword === "sad" ||
-        ekword === "saddest" ||
-        ekword === "loneliness" ||
-        ekword === "chidha" ||
-        ekword === "akelapan" ||
-        ekword === "bekar" ||
-        ekword === "sabsedukhi" ||
-        ekword === "trouble" ||
-        ekword === "noone" ||
-        ekword === "neendnhi" ||
-        ekword === "zero" ||
-        ekword === "down" ||
-        ekword === "unmotivated" ||
-        ekword === "isolated" ||
-        ekword === "isolate"
+        ekword == "suffocating" ||
+        ekword == "anymore" ||
+        ekword == "couldn't" ||
+        ekword == "couldnot" ||
+        ekword == "useless" ||
+        ekword == "sad" ||
+        ekword == "saddest" ||
+        ekword == "loneliness" ||
+        ekword == "chidha" ||
+        ekword == "akelapan" ||
+        ekword == "bekar" ||
+        ekword == "sabsedukhi" ||
+        ekword == "trouble" ||
+        ekword == "noone" ||
+        ekword == "neendnhi" ||
+        ekword == "zero" ||
+        ekword == "down" ||
+        ekword == "unmotivated" ||
+        ekword == "isolated" ||
+        ekword == "isolate"
       ) {
         if (wordsmap[ekword]) {
           wordsmap[ekword] += 2;
@@ -129,32 +129,32 @@ export default function resultpage(props) {
           wordsmap[ekword] = 2;
         }
       } else if (
-        ekword === "lonely" ||
-        ekword === "empty" ||
-        ekword === "darkness" ||
-        ekword === "alone" ||
-        ekword === "guilty" ||
-        ekword === "worthless" ||
-        ekword === "killed" ||
-        ekword === "meaningless" ||
-        ekword === "burden" ||
-        ekword === "disappear" ||
-        ekword === "vanish" ||
-        ekword === "akela" ||
-        ekword === "ghutan" ||
-        ekword === "khali" ||
-        ekword === "andhera" ||
-        ekword === "andherapan" ||
-        ekword === "Gayab" ||
-        ekword === "vyarth" ||
-        ekword === "aatmhatya" ||
-        ekword === "marne" ||
-        ekword === "insomania" ||
-        ekword === "killing" ||
-        ekword === "nobody" ||
-        ekword === "struggling" ||
-        ekword === "sadness" ||
-        ekword === "kill"
+        ekword == "lonely" ||
+        ekword == "empty" ||
+        ekword == "darkness" ||
+        ekword == "alone" ||
+        ekword == "guilty" ||
+        ekword == "worthless" ||
+        ekword == "killed" ||
+        ekword == "meaningless" ||
+        ekword == "burden" ||
+        ekword == "disappear" ||
+        ekword == "vanish" ||
+        ekword == "akela" ||
+        ekword == "ghutan" ||
+        ekword == "khali" ||
+        ekword == "andhera" ||
+        ekword == "andherapan" ||
+        ekword == "Gayab" ||
+        ekword == "vyarth" ||
+        ekword == "aatmhatya" ||
+        ekword == "marne" ||
+        ekword == "insomania" ||
+        ekword == "killing" ||
+        ekword == "nobody" ||
+        ekword == "struggling" ||
+        ekword == "sadness" ||
+        ekword == "kill"
       ) {
         if (wordsmap[ekword]) {
           wordsmap[ekword] += 3;
@@ -170,7 +170,7 @@ export default function resultpage(props) {
     }
     // console.log(wordsdata);
 
-    const ppi = (ans / 85) * 100;
+    const ppi = (ans / 60) * 100;
     setWorddata(ppi);
     console.log(ppi);
     setLoad(true);
@@ -183,6 +183,11 @@ export default function resultpage(props) {
           <div className="col mt-4 text-center resulthead">
             <h1>RESULTS</h1>
           </div>
+        </div>
+        <div className="row">
+          <button className="btn btn-warning" onClick={seeSpoken}>
+            see transcript
+          </button>
         </div>
         <div className="row">
           <div className="col-2">
