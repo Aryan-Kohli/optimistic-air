@@ -93,7 +93,7 @@ export default function loginpage(props) {
               Login
             </button>
             <Link to="/register" className="register-link">
-              <p className = "margin" >
+              <p className="margin">
                 Dont't have an account? <a href="#">Register</a>
                 <br />
               </p>

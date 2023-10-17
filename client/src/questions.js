@@ -10,21 +10,20 @@ const question = [
         id:2,
         QuestionHindi:"क्या आपने उन गतिविधियों या शौक में रुचि खो दी है जो आपको खुशी देते थे ?",
         Question:"Have you lost interest in activities or hobbies that used to bring you joy ?"
-        //  Yes anymore can't couldn't cannot couldnot don't doesnot donot 
+        
         
     },
     {
         id:3,
         QuestionHindi:"क्या आपको ध्यान केंद्रित करने या निर्णय लेने में परेशानी होती है जिससे आप दोषी या बेकार महसूस करते हैं?",
         Question:"Do you have trouble concentrating or making decisions that makes you feel guilty or worthless ?"
-        // lost Yes overwhelming have guilty worthless guilt useless waste empty meaningless
-        // not worthy 
+         
     },
     {
         id:4,
         QuestionHindi:"आप अपने समग्र मूड का वर्णन कैसे करेंगे ?",
         Question:"How would you describe your overall mood ?"
-        // alone lonely burden dissapear vanish numb dumb
+      
     },
     {
         id:5,

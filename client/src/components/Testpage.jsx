@@ -395,9 +395,9 @@ function Testpage(props) {
             </div>
           </div>
           <br />
-          <div className="row">
+          {/* <div className="row">
             <h1>{live}</h1>
-          </div>
+          </div> */}
           <div className="row">
             <div className="col-md-6">
               <div className="row">

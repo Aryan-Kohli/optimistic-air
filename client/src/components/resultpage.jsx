@@ -23,53 +23,7 @@ export default function resultpage(props) {
   const [loadchart, setLoad] = React.useState(false);
   useEffect(() => {
     const data_audio = props.data.transcript_string;
-    const arr = [
-      "lonely",
-      "irritated",
-      "suffocating",
-      "empty",
-      "darkness",
-      "anymore",
-      "yes",
-      "couldn't",
-      "cannot",
-      "could not",
-      "alone",
-      "guilty",
-      "worthless",
-      "killed",
-      "useless",
-      "meaningless",
-      "lonely",
-      "burden",
-      "sad",
-      "saddest",
-      "disappear",
-      "vanish",
-      "nump",
-      "dumb",
-      "unhappy",
-      "loneliness",
-      /// hindi words
-      "akela",
-      "chidha ",
-      "ghutan",
-      "khali",
-      "Andhera",
-      "andherapan",
-      "akelapan",
-      "Dukhi",
-      "Gayab",
-      "bekar",
-      "apraadhi",
-      "sabse Dukhi",
-      "vyarth",
-      "aatmhatya",
-      "Marne",
-      "murkh",
-      "bekar",
-      "chutiya",
-    ];
+
     var ans = 0;
     const wordsmap = {};
     console.log("transcipt is", props.data.transcript_string);
@@ -170,7 +124,7 @@ export default function resultpage(props) {
     }
     // console.log(wordsdata);
 
-    const ppi = (ans / 60) * 100;
+    const ppi = (ans / 37) * 100;
     setWorddata(ppi);
     console.log(ppi);
     setLoad(true);
@@ -184,11 +138,11 @@ export default function resultpage(props) {
             <h1>RESULTS</h1>
           </div>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <button className="btn btn-warning" onClick={seeSpoken}>
             see transcript
           </button>
-        </div>
+        </div> */}
         <div className="row">
           <div className="col-2">
             <Link

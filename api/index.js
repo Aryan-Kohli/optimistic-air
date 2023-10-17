@@ -16,17 +16,18 @@ const bcryptsalt = bcrypt.genSaltSync(10);
 app.use(cookieParser());
 mongoose.connect(process.env.MONGO_URL);
 app.use(cors({
-    credentials:true,
-    // origin:"https://optimistic-air.netlify.app"
-    origin:"http://localhost:5173/"
-}))
+    credentials: true,
+    origin: ["http://localhost:5173", "https://optimistic-air.netlify.app"]
+}));
+
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5173/');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173, https://optimistic-air.netlify.app');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Access-Control-Allow-Credentials', true);
     next();
 });
+
 
 app.post('/register',async (req,resp)=>{
     const {firstname,
