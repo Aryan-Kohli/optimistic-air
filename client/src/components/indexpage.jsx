@@ -12,7 +12,7 @@ export default function indexpage(props) {
       <div className="indexpage">
         <header className="header">
           <a href="#" className="logo">
-            {/* OptimisticAir */}Aryan ji
+            OptimisticAir
           </a>
           <nav className="navbar">
             <a href="#" style={{ "--i": "1" }}>
