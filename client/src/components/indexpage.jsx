@@ -12,7 +12,7 @@ export default function indexpage(props) {
       <div className="indexpage">
         <header className="header">
           <a href="#" className="logo">
-            OptimisticAir
+            {/* OptimisticAir */}Aryan ji
           </a>
           <nav className="navbar">
             <a href="#" style={{ "--i": "1" }}>
@@ -144,7 +144,7 @@ export default function indexpage(props) {
                 </div>
                 <div className="button">
                   <Link to="/test" className="butt">
-                 Take Test
+                    Take Test
                   </Link>
                 </div>
                 <div></div>
@@ -177,7 +177,7 @@ export default function indexpage(props) {
               <p>ADGITM</p>
               <p>Shastri Park,New Delhi</p>
               <p className="email-id">artist@gmail.com</p>
-              <h4 id = "num">+91-001123456</h4>
+              <h4 id="num">+91-001123456</h4>
             </div>
             <div className="col">
               <h3>
@@ -191,19 +191,13 @@ export default function indexpage(props) {
                   <a href>Home</a>
                 </li>
                 <li>
-                  <a href="#testsec">
-                    Take Test
-                  </a>
+                  <a href="#testsec">Take Test</a>
                 </li>
                 <li>
-                  <a href="#foot">
-                    About Us
-                  </a>
+                  <a href="#foot">About Us</a>
                 </li>
                 <li>
-                  <Link to="/login">
-                    Account
-                  </Link>
+                  <Link to="/login">Account</Link>
                 </li>
               </ul>
             </div>
