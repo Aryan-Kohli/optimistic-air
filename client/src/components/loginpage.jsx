@@ -16,8 +16,8 @@ export default function loginpage(props) {
       const { data } = await axios.post("/login", { email, password });
       props.setlogin(true);
       console.log(data);
-      setRedirect(true);
       setuser(data);
+      setRedirect(true);
     } catch (e) {
       alert("there is some error in backend");
     }
