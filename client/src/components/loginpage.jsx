@@ -9,7 +9,11 @@ export default function loginpage(props) {
   const [password, setpassword] = React.useState();
   const { setuser } = useContext(UserContext);
   const [redirect, setRedirect] = React.useState(false);
-
+  const [passtype, setpasstype] = React.useState("password");
+  function change() {
+    if (passtype == "password") setpasstype("text");
+    else setpasstype("password");
+  }
   async function loginUser(ev) {
     ev.preventDefault();
     try {
@@ -71,11 +75,15 @@ export default function loginpage(props) {
               <label>Email</label>
             </div>
             <div className="input-box">
-              <span className="icon">
-                <ion-icon name="lock-closed" />
+              <span className="icon" onClick={change}>
+                {passtype == "password" ? (
+                  <ion-icon name="eye-off" />
+                ) : (
+                  <ion-icon name="eye" />
+                )}
               </span>
               <input
-                type="password"
+                type={passtype}
                 id="pass"
                 onChange={(event) => setpassword(event.target.value)}
                 required
