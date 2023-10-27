@@ -44,6 +44,17 @@ body.dark {
     overflow-x: hidden;
 }
 
+.dark-theme {
+    --light: #0C0C1E;
+    --dark: #FBFBFB;
+    --grey: #060714;
+}
+
+/* .light-theme { 
+   background:  var(--light);
+   color: var(--blue);
+} */
+
 /* SIDEBAR */
 .dashboardpage #sidebar {
     position: fixed;
@@ -339,6 +350,12 @@ html {
     font-family: var(--poppins);
     max-height: calc(100vh - 56px);
     overflow-y: auto;
+    background: var(--grey);
+}
+.btn-light {
+    --bs-btn-color: var(--dark);
+    --bs-btn-bg: var(--light);
+    --bs-btn-border-color: none;
 }
 
 .dashboardpage #content main .head-title {

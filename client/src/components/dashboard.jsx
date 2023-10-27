@@ -73,10 +73,22 @@ export default function dashboard(props) {
       data2.push([emotion, 1]);
     }
   });
+  
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  
+    const toggleTheme = () => {
+      setIsDarkMode((prevIsDarkMode) => !prevIsDarkMode);
+      console.log("done");
+    };
+  
+    const themeClass = isDarkMode ? 'dark-theme' : 'light-theme';
+  
+
+
   return (
-    <div className="dashboardpage">
+    <div className={`dashboardpage ${themeClass}`}>
       <section id="sidebar">
-        <a href="#" className="brand">
+        <a href="#" className={`brand ${themeClass}`}>
           <i className="bx bxs-brain" />
           <span className="text1">OptimisticAir</span>
         </a>
@@ -129,8 +141,8 @@ export default function dashboard(props) {
               </button>
             </div>
           </form>
-          <input type="checkbox" id="switch-mode" hidden />
-          <label htmlFor="switch-mode" className="switch-mode" />
+          <input type="checkbox" id="switch-mode" checked = {isDarkMode} onChange={toggleTheme} hidden />
+          <label htmlFor="switch-mode" className= "switch-mode" />
           <a href="#" className="notification" id="userpic">
             <Link to="/" replace={true}>
               <i className="bx bxs-home" />
