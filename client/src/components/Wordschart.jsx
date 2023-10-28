@@ -10,7 +10,7 @@ function WordsChart({ percentage }) {
 
   return (
     <div>
-      <h2 id="Overallresulthead">Overall Result</h2>
+      {/* <h2 id="Overallresulthead">Overall Result</h2> */}
       <Chart
         width={"400px"}
         height={"300px"}

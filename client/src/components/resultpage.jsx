@@ -24,10 +24,22 @@ export default function resultpage(props) {
   const [loadchart, setLoad] = React.useState(false);
   async function upload_data(ev) {
     ev.preventDefault();
+    let today = new Date();
+    let time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+
     try {
       await axios.put("/upload", {
         emotiondata,
         percentage,
+        time,
+        date,
       });
     } catch (error) {
       console.error("Error uploading data:", error);
@@ -190,9 +202,11 @@ export default function resultpage(props) {
         </div>
         <div className="row mt-4">
           <div className="col-md-4 ">
+            <h1>Video Result :</h1>
             <Emotionchart emotiondata={emotiondata} />
           </div>
           <div className="col-md-4 offset-md-2">
+            <h1>Audio Result :</h1>
             {loadchart && <WordsChart percentage={percentage} />}
           </div>
         </div>

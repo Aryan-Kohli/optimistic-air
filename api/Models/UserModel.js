@@ -10,7 +10,9 @@ const UserSchema = new mongoose.Schema({
     prevresults: [
         {
             audio : Number,
-            video : []
+            video : [],
+            time : String ,
+            date : String
         }
     ]
 })

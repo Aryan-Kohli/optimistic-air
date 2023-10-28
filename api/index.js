@@ -78,7 +78,7 @@ app.post('/login',async (req,resp)=>{
 }
 catch(e)
 {
-      console.error(err);
+      console.error(e);
     resp.status(500).json("Internal Server Error");
 }
 })
@@ -109,7 +109,7 @@ app.put('/upload', async (req, resp) => {
     console.log("at backend upload function");
   const { token } = req.cookies;
   if (token) {
-    const { emotiondata, percentage } = req.body;
+    const { emotiondata, percentage , time , date } = req.body;
     jwt.verify(token, jwtsecret, {}, async (err, user) => {
       if (err) throw err;
       const Userdoc = await User.findById(user.id);
@@ -119,6 +119,8 @@ app.put('/upload', async (req, resp) => {
         const newResult = {
             audio: percentage,
             video: emotiondata,
+            time : time ,
+            date : date
         };
         console.log("evjk2");
 

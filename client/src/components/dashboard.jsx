@@ -13,11 +13,13 @@ import { UserContext } from "../UserContext";
 import { Chart } from "react-google-charts";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
+import Emotionchart from "./emotionChart";
+import WordsChart from "./Wordschart";
 export default function dashboard(props) {
   const { ready, user, setUser } = useContext(UserContext);
   const [out, setOut] = React.useState(null);
   const [prevResults, setPrevResults] = React.useState([]);
-
+  let abc;
   React.useEffect(() => {
     // Function to fetch previous results
     const fetchPrevResults = async () => {
@@ -26,6 +28,12 @@ export default function dashboard(props) {
         setPrevResults(response.data);
         console.log(response.data);
         console.log("all is fine");
+        let all = prevResults.map((x) => {
+          <div>
+            <h1>Time is : {x.prevResults.time}</h1>
+          </div>;
+        });
+        abc = all;
       } catch (error) {
         console.error("Error fetching previous results:", error);
         // Handle error appropriately (e.g., show an error message to the user)
@@ -119,15 +127,15 @@ export default function dashboard(props) {
           <li>
             <a href="#analytics">
               <i className="bx bxs-doughnut-chart" />
-              <span className="text">Analytics</span>
+              <span className="text">Previous Results</span>
             </a>
           </li>
-          <li>
+          {/* <li>
             <a href="#reportt">
               <i className="bx bxs-message-dots" />
               <span className="text">Report</span>
             </a>
-          </li>
+          </li> */}
           <li>
             <a href="#helpingg">
               <i className="bx bxs-group" />
@@ -213,9 +221,68 @@ export default function dashboard(props) {
           </ul>
           <section className="container" id="analytics">
             <div className="analysis">
-              <h1 className="cng">Analysis</h1>
+              <h1 className="cng">Previous Results</h1>
               <br />
-              <h1 className="result">Overall result</h1>
+              {prevResults.length == 0 ? (
+                <h1 className="txt">NO Result to display</h1>
+              ) : (
+                <div className="accordion" id="accordionExample">
+                  <ul>
+                    {prevResults.map((result, index) => (
+                      <li key={index}>
+                        <div className="accordion-item">
+                          <h2 className="accordion-header">
+                            <button
+                              className="accordion-button"
+                              // type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#collapseOne"
+                              aria-expanded="true"
+                              aria-controls="collapseOne"
+                            >
+                              {/* <div className="row">
+                              <div className="col-2"><p></p>{result.date}</div>
+                              <div className="col-2 ">{result.time}</div>
+                            </div> */}
+                              <h4>
+                                {result.date}{" "}
+                                &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                                {result.time}
+                              </h4>
+                            </button>
+                          </h2>
+                          <div
+                            id="collapseOne"
+                            className="accordion-collapse collapse "
+                            data-bs-parent="#accordionExample"
+                          >
+                            <div className="accordion-body">
+                              <div className="row">
+                                {/* <div className="col-2">
+                                <p className="txt">{result.time}</p>
+                              </div>
+                              <div className="col-2">
+                                <p className="txt">{result.date}</p>
+                              </div> */}
+                                <div className="col-4">
+                                  <Emotionchart emotiondata={result.video} />
+                                </div>
+                                <div className="col-4">
+                                  <WordsChart percentage={result.audio} />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* <Emotionchart emotiondata={result.video} /> */}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* <h1 className="result">Overall result</h1>
               <div id="piechart" className="chart" />
               <Chart
                 width={"400px"}
@@ -234,7 +301,7 @@ export default function dashboard(props) {
               <h3 className="txt">Score:250</h3>
               <br />
               <h1 className="result">Video Result</h1>
-              {/* <div id="curve_chart" className="chart1" /> */}
+
               <Chart
                 width={"400px"}
                 height={"300px"}
@@ -246,10 +313,10 @@ export default function dashboard(props) {
                 }}
                 rootProps={{ "data-testid": "1" }}
               />
-              <h3 className="txt">Score:120</h3>
+              <h3 className="txt">Score:120</h3> */}
             </div>
           </section>
-          <div className="table-data" id="reportt">
+          {/* <div className="table-data" id="reportt">
             <div className="order">
               <div className="head">
                 <h3>Report</h3>
@@ -317,7 +384,7 @@ export default function dashboard(props) {
                 </tbody>
               </table>
             </div>
-          </div>
+          </div> */}
           <div className="helping" id="helpingg">
             <div className="help">
               <div className="help-box">

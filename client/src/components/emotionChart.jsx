@@ -16,7 +16,7 @@ export default function emotionChart({ emotiondata }) {
   // }, []);
   return (
     <div>
-      <h2 id="Emotionsresulthead">Your Emotions</h2>
+      {/* <h2 id="Emotionsresulthead">Your Emotions</h2> */}
       <Chart
         width={"400px"}
         height={"300px"}
@@ -24,7 +24,8 @@ export default function emotionChart({ emotiondata }) {
         loader={<div>Loading Chart</div>}
         data={data}
         options={{
-          backgroundColor: "white",
+          backgroundColor: "#0C0C1E ",
+          // color: "white",
         }}
         rootProps={{ "data-testid": "1" }}
       />
