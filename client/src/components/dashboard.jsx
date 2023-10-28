@@ -223,12 +223,12 @@ export default function dashboard(props) {
             <div className="analysis">
               <h1 className="cng">Previous Results</h1>
               <br />
-              {prevResults.length == 0 ? (
+              {user.prevresults.length == 0 ? (
                 <h1 className="txt">NO Result to display</h1>
               ) : (
                 <div className="accordion" id="accordionExample">
                   <ul>
-                    {prevResults.map((result, index) => (
+                    {user.prevresults.map((result, index) => (
                       <li key={index}>
                         <div className="accordion-item">
                           <h2 className="accordion-header">
