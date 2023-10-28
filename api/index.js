@@ -71,7 +71,13 @@ app.post('/login', async (req, resp) => {
           {},
           (err, token) => {
             if (err) throw err;
-            resp.cookie('token', token, { secure: true, httpOnly: true, sameSite: 'strict' }).json(userdoc);
+            resp.cookie('token', token, {
+  secure: true,
+  httpOnly: true,
+  sameSite: 'None',
+  domain: 'optimistic-air.netlify.app'
+}).json(userdoc);
+            // resp.cookie('token', token, { secure: true, httpOnly: true, sameSite: 'strict' }).json(userdoc);
           }
         );
       } else {
