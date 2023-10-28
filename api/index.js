@@ -20,7 +20,12 @@ app.use(cors({
     origin:  "https://optimistic-air.netlify.app"
     // origin: "http://localhost:5173"
 }));
-
+app.use((req, res, next) => {
+  if (req.secure) {
+    return next();
+  }
+  res.redirect(`https://${req.headers.host}${req.url}`);
+});
 app.use((req, res, next) => {
     // res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
     res.header('Access-Control-Allow-Origin', 'https://optimistic-air.netlify.app');
