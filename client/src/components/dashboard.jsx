@@ -226,7 +226,7 @@ export default function dashboard(props) {
               {prevResults.length == 0 ? (
                 <h1 className="txt">NO Result to display</h1>
               ) : (
-                <div className="accordion" id="accordionExample">
+                <div className="accordion test-result" id="accordionExample">
                   <ul>
                     {prevResults.map((result, index) => (
                       <li key={index}>

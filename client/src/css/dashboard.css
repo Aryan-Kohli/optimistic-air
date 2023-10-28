@@ -344,6 +344,17 @@ html {
 /* MAIN */
 /* Apply the .dashboardpage class to each of these selectors */
 
+.dashboardpage .test-result {
+    color: var(--dark);
+    background-color: var(--light);
+    --bs-accordion-color: var(--dark);
+    --bs-accordion-bg: var(--light);
+    --bs-accordion-btn-color: var(--dark);
+    --bs-accordion-btn-bg: var(--light);
+    --bs-accordion-active-color: var(--dark);
+    --bs-accordion-active-bg: var(--light);
+}
+
 .dashboardpage #content main {
     width: 100%;
     padding: 36px 24px;
