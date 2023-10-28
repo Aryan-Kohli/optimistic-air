@@ -21,13 +21,26 @@ app.use(cors({
     // origin: "http://localhost:5173"
 }));
 app.use((req, res, next) => {
-    // res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
-    res.header('Access-Control-Allow-Origin', 'https://optimistic-air.netlify.app');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', true);
-    next();
+  res.header('Access-Control-Allow-Origin', 'https://optimistic-air.netlify.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
 });
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Origin', 'https://optimistic-air.netlify.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.status(204).send();
+});
+
+// app.use((req, res, next) => {
+//     // res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+//     res.header('Access-Control-Allow-Origin', 'https://optimistic-air.netlify.app');
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     res.header('Access-Control-Allow-Credentials', true);
+//     next();
+// });
 
 
 app.post('/register',async (req,resp)=>{
