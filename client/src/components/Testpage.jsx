@@ -3,7 +3,7 @@ import * as faceapi from "face-api.js";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import "../css/Testpage.css";
+import "../css/testpage2.css";
 import { Link, Navigate } from "react-router-dom";
 import React, { useState, useRef, useEffect } from "react";
 import allquestion from "../questions.js";
@@ -347,14 +347,94 @@ function Testpage(props) {
     makestop(false);
     // setCount(2);
     stopTimer();
-
-    // return;
   }
-  // if (count == 2) return <Navigate to="/result" replace={true} />;
 
   return (
     <>
-      <div className="testpagemain">
+      <section className="testpage">
+        <div className="que">
+          <div className="que-change">
+            {current_question == "Question will appear here" ? (
+              <h1 className="text-center QuestionsDiv mt-4">
+                {current_question}
+              </h1>
+            ) : (
+              <h1>
+                {current_question}
+                {stop && (
+                  <button id="listenbtn" onClick={playaudio}>
+                    <i className="bx bxs-volume-full"></i>
+                  </button>
+                )}
+              </h1>
+            )}
+          </div>{" "}
+        </div>
+        <div className="row">
+          <div className="col-4 mx-auto">
+            <div className="appvide">
+              <video
+                crossOrigin="anonymous"
+                ref={videoRef}
+                autoPlay
+                // width={550}
+
+                className="vid"
+              ></video>
+            </div>
+          </div>
+        </div>
+        {/* <video
+          crossOrigin="anonymous"
+          ref={videoRef}
+          autoPlay
+          className="vid"
+        ></video> */}
+
+        <div className="que-change">
+          {lang == "" ? (
+            <div>
+              <h1 className="">Select the launguage</h1>
+
+              <div className="btns">
+                <button className="btn " onClick={() => Setlang("h")}>
+                  Hindi
+                </button>
+
+                <button className="btn " onClick={() => Setlang("e")}>
+                  English
+                </button>
+              </div>
+              {/* <div className="btns">
+                <button className="btn">Hindi</button>
+                <button className="btn">English</button>
+              </div> */}
+            </div>
+          ) : (
+            <div>
+              {stop && (
+                <button
+                  className="btn"
+                  onClick={test_started ? nextquestion : startest}
+                >
+                  {test_started ? "Next Question" : "Start test"}
+                </button>
+              )}
+              {test_started && seconds >= 20 && (
+                <button className="btn " onClick={endtest}>
+                  End test{" "}
+                </button>
+              )}
+              {!stop && seconds > 20 && (
+                <Link to="/result" className="btn">
+                  see result{" "}
+                </Link>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+      {/* <div className="testpagemain">
         <div className="container">
           <div className="row">
             <div className="col ">
@@ -391,13 +471,11 @@ function Testpage(props) {
                   </div>
                 </div>
               )}
-              {/* // <h1 className="text-center">{current_question}</h1> */}
+              
             </div>
           </div>
           <br />
-          {/* <div className="row">
-            <h1>{live}</h1>
-          </div> */}
+          
           <div className="row">
             <div className="col-md-6">
               <div className="row">
@@ -453,14 +531,6 @@ function Testpage(props) {
                         End test{" "}
                       </button>
                     )}
-                    {/* {test_started && (
-                  <button className="btn btn2" onClick={stopInterval}>
-                    Stop{" "}
-                  </button>
-                )} */}
-                    {/* <button onClick={test_started ? endtest : seeresults}>
-                {test_started ? "Endtest" : "See results"}
-              </button> */}
                     {!stop && seconds > 20 && (
                       <Link to="/result" className="btn btn2">
                         see result{" "}
@@ -472,7 +542,7 @@ function Testpage(props) {
             </div>
             <div className="col-md-6">
               <div className="myapp">
-                {/* <h1>FAce Detection</h1> */}
+           
                 <div className="appvide">
                   <video
                     crossOrigin="anonymous"
@@ -482,9 +552,6 @@ function Testpage(props) {
                     className="videopart"
                   ></video>
 
-                  {/* <button onClick={stopInterval}>Stop</button> */}
-                  {/* <Link to="/result">STOP TEST </Link> */}
-                  {/* <button onClick={stopInterval}>stop recording</button> */}
                 </div>
                 <canvas
                   ref={canvasRef}
@@ -495,137 +562,10 @@ function Testpage(props) {
               </div>
             </div>
           </div>
-
-          {/* <div
-            className="main-content"
-            onClick={() => setTextToCopy(transcript)}
-          >
-            {transcript}
-          </div> */}
-          {/* <video ref={videoRef} autoPlay width={150} /> */}
-
-          {/* <h1>{result}</h1> */}
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
 
 export default Testpage;
-// import { useRef, useEffect, useState } from "react";
-// // import "./Test.css";
-// import * as faceapi from "face-api.js";
-// import Result from "./resultpage.jsx";
-// import { Link, Navigate } from "react-router-dom";
-// function Test(props) {
-//   const videoRef = useRef();
-//   const canvasRef = useRef();
-//   const [intervalId, setIntervalId] = useState(null);
-
-//   // LOAD FROM USEEFFECT
-//   useEffect(() => {
-//     startVideo();
-//     videoRef && loadModels();
-//   }, []);
-
-//   // OPEN YOU FACE WEBCAM
-//   const startVideo = () => {
-//     // if (stop === false) return;
-//     navigator.mediaDevices
-//       .getUserMedia({ video: true })
-//       .then((currentStream) => {
-//         // if (!currentStream) return;
-//         videoRef.current.srcObject = currentStream;
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         // return "fdj";
-//       });
-//   };
-//   // LOAD MODELS FROM FACE API
-
-//   const loadModels = async () => {
-//     await faceapi.nets.tinyFaceDetector.loadFromUri("/models");
-//     await faceapi.nets.faceLandmark68Net.loadFromUri("/models");
-//     await faceapi.nets.faceRecognitionNet.loadFromUri("/models");
-//     await faceapi.nets.faceExpressionNet.loadFromUri("/models");
-
-//     faceMyDetect(); // Start the detection
-//   };
-//   const [stop, makestop] = useState(true);
-//   const emotions = [];
-//   const faceMyDetect = () => {
-//     if (stop === false) return;
-//     setInterval(async () => {
-//       const detections = await faceapi
-//         .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
-//         .withFaceLandmarks()
-//         .withFaceExpressions();
-//       // if()
-//       if (detections.length > 0) {
-//         var allexpressions = detections[0].expressions;
-//         if (allexpressions.neutral > 0.8) emotions.push("neutral");
-//         if (allexpressions.angry > 0.8) emotions.push("angry");
-//         if (allexpressions.happy > 0.8) emotions.push("happy");
-//         if (allexpressions.sad > 0.8) emotions.push("sad");
-//         console.log(emotions[emotions.length - 1]);
-//       }
-
-//       // var happy = allexpressions.happy;
-//       // if (Math.floor(happy) === 1) console.log("is happy");
-
-//       // var angry = allexpressions.angry;
-//       // if (Math.floor(angry) === 1) console.log("is angry");
-
-//       // DRAW YOU FACE IN WEBCAM
-//       // if (videoRef.current == null) return;
-//       canvasRef.current.innerHtml = faceapi.createCanvasFromMedia(
-//         videoRef.current
-//       );
-//       // if (canvasRef.current == null) return;
-//       faceapi.matchDimensions(canvasRef.current, {
-//         width: 250,
-//         height: 250,
-//       });
-
-//       // const resized = faceapi.resizeResults(detections, {
-//       //   width: 250,
-//       //   height: 250,
-//       // });
-
-//       // faceapi.draw.drawDetections(canvasRef.current, resized);
-//       // faceapi.draw.drawFaceLandmarks(canvasRef.current, resized);
-//       // faceapi.draw.drawFaceExpressions(canvasRef.current, resized);
-//     }, 1000);
-//   };
-//   const stopInterval = () => {
-//     console.log("stopped is called");
-//     console.log(emotions.length);
-//     props.setemotion(emotions);
-//     makestop((stop) => !stop);
-//     videoRef.current = null;
-//     console.log("props are updated");
-//     console.log("now stop is ", stop);
-//     // return <Navigate to="/result" replace={true} />;
-//   };
-//   return (
-//     <div className="myapp">
-//       <h1>FAce Detection</h1>
-//       <div className="appvide">
-//         <video
-//           crossOrigin="anonymous"
-//           ref={videoRef}
-//           autoPlay
-//           width={250}
-//         ></video>
-
-//         {/* <button onClick={stopInterval}>Stop</button> */}
-//         <Link to="/result">STOP TEST </Link>
-//         <button onClick={stopInterval}>stop recording</button>
-//       </div>
-//       <canvas ref={canvasRef} width="250" height="250" className="appcanvas" />
-//     </div>
-//   );
-// }
-
-// export default Test;

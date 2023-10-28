@@ -1,0 +1,111 @@
+* {
+    margin: 0px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.testpage {
+    width: 100%;
+    height: 100vh;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: url('../pics/test-img.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: animateBg 5s linear infinite;
+}
+
+/* .testpage .que{
+    text-align: center;
+    font-size:x-large;
+} */
+.testpage .btns {
+    text-align: center;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.testpage .vid {
+    border: 2px lightgray solid;
+    border-radius: 30px;
+    /* width: 500px; */
+    height: 300px;
+
+    background-color: rgba(0, 0, 0, 0.317);
+}
+.testpage .centered-video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Optionally, this centers the video vertically as well */
+}
+.testpage .lang {
+    text-align: center;
+    font-size: large;
+}
+
+/* change in css */
+.testpage .start {
+    text-align: center;
+}
+
+.testpage .btn {
+    padding: 10px 35px;
+    border-radius: 25px;
+    border: 1px lightgrey solid;
+    background-color: rgba(0, 0, 0, 0.235);
+    cursor: pointer;
+    color: white;
+    margin-top: 45px;
+    margin-inline: 25px;
+    font-size: 20px;
+}
+
+.testpage .btn:hover {
+    padding: 10px 35px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px lightgray solid;
+    cursor: pointer;
+    color: black;
+    font-size: 18px;
+}
+.appvide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* margin: auto; */
+    /* width: 50%; */
+}
+.testpage .que {
+    color: rgba(255, 255, 255, 0.674);
+    text-align: center;
+    font-size: x-large;
+    padding-top: 15px;
+}
+.testpage .que-change {
+    color: rgba(255, 255, 255, 0.674);
+    padding-top: 15px;
+    ;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+}
+
+.testpage i {
+    cursor: pointer;
+    font-size: larger;
+}
+
+.testpage i:hover {
+    cursor: pointer;
+    font-size: larger;
+    color: rgba(156, 216, 17, 0.785);
+}
+
+/* change over */
