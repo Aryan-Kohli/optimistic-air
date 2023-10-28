@@ -63,7 +63,7 @@ app.post('/login',async (req,resp)=>{
         const comp_pass = bcrypt.compareSync(password,userdoc.password);
         if(comp_pass)
         {
-            jwt.sign({firstname:userdoc.firstname,lastname:userdoc.lastname,email:userdoc.email,location:userdoc.location,id:userdoc._id,prevresults:[]},jwtsecret,{},(err,token)=>{
+            jwt.sign({firstname:userdoc.firstname,lastname:userdoc.lastname,email:userdoc.email,location:userdoc.location,id:userdoc._id,prevresults:userdoc.prevresults},jwtsecret,{},(err,token)=>{
                 if(err) throw err;
                 resp.cookie('token',token).json(userdoc);
             })
