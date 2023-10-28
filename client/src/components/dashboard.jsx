@@ -180,7 +180,7 @@ export default function dashboard(props) {
             </Link>
           </a>
           <a href="#" className="profile">
-            <img src={girlimg} />
+          <div>{user.firstname.charAt(0)}</div>
           </a>
         </nav>
         <main>
@@ -204,7 +204,8 @@ export default function dashboard(props) {
           </div>
           <ul className="box-info">
             <li>
-              <img className="imggg" src={girlimg} />
+              <div className="imggg">{user.firstname.charAt(0)}</div>
+              {/* <img className="imggg" src={girlimg} /> */}
               <span className="text">
                 <h1>{user.firstname}</h1>
                 {/* <h4> Student</h4> */}

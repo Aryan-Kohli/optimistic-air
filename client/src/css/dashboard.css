@@ -305,12 +305,17 @@ html {
     align-items: center;
 }
 
-.dashboardpage #content nav .profile img {
+.dashboardpage #content nav .profile div{
     width: 36px;
     height: 36px;
-    object-fit: cover;
+    /* object-fit: cover; */
     border-radius: 50%;
     border: 2px solid lightgray;
+    background-color: #3C91E6;
+    color: #FBFBFB;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: var(--yellow)
 }
 
 .dashboardpage #content nav .switch-mode {
@@ -426,6 +431,9 @@ html {
     width: 100px;
     border-radius: 50%;
     border: 2px solid lightgray;
+    background-color: #3C91E6;
+    color: #FBFBFB;
+    font-weight: bolder;
 }
 
 .dashboardpage #content main .box-info {
