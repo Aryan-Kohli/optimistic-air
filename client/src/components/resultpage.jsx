@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { Chart } from "react-google-charts";
 import "../css/resultpage.css";
+import axios from "axios";
 import Emotionchart from "./emotionChart";
 import WordsChart from "./Wordschart";
 // imort {Link}
@@ -21,6 +22,19 @@ export default function resultpage(props) {
   const [percentage, setWorddata] = React.useState();
   // const []
   const [loadchart, setLoad] = React.useState(false);
+  async function upload_data(ev) {
+    ev.preventDefault();
+    try {
+      await axios.put("/upload", {
+        emotiondata,
+        percentage,
+      });
+    } catch (error) {
+      console.error("Error uploading data:", error);
+      alert("Unable to upload");
+    }
+  }
+
   useEffect(() => {
     const data_audio = props.data.transcript_string;
 
@@ -129,7 +143,9 @@ export default function resultpage(props) {
     console.log(ppi);
     setLoad(true);
   }, []);
-
+  // if (loadchart) {
+  //   upload_data();
+  // }
   return (
     <div className="resultpage">
       <div className="container ">
@@ -162,14 +178,19 @@ export default function resultpage(props) {
               Dashboard
             </Link>
           </div>
+          <div className="col-2">
+            <button
+              onClick={upload_data}
+              className="btn btn2 mt-4
+            homelink"
+            >
+              Save results
+            </button>
+          </div>
         </div>
         <div className="row mt-4">
           <div className="col-md-4 ">
-            <Emotionchart
-              emotiondata={emotiondata}
-              percentage={percentage}
-              chartdata={props.chartdata}
-            />
+            <Emotionchart emotiondata={emotiondata} />
           </div>
           <div className="col-md-4 offset-md-2">
             {loadchart && <WordsChart percentage={percentage} />}

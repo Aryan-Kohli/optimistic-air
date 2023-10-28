@@ -97,7 +97,7 @@ function Testpage(props) {
       clearInterval(intervalId); // Clear the interval when this function is called
     };
     let iterations = 0;
-    const maxIterations = 35;
+    const maxIterations = 200;
     intervalId = setInterval(async () => {
       iterations++;
       if (iterations >= maxIterations) {
@@ -162,7 +162,7 @@ function Testpage(props) {
       //   faceapi.draw.drawDetections(canvasRef.current, resized);
       //   faceapi.draw.drawFaceLandmarks(canvasRef.current, resized);
       //   faceapi.draw.drawFaceExpressions(canvasRef.current, resized);
-    }, 500);
+    }, 100);
   };
   const stopInterval = () => {
     // console.log("stopped is called");

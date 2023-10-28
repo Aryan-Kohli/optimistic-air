@@ -16,24 +16,7 @@ import axios from "axios";
 export default function dashboard(props) {
   const { ready, user, setUser } = useContext(UserContext);
   const [out, setOut] = React.useState(null);
-  const [prevResults, setPrevResults] = React.useState([]);
-
-  React.useEffect(() => {
-    // Function to fetch previous results
-    const fetchPrevResults = async () => {
-      try {
-        const response = await axios.get("/allresults");
-        setPrevResults(response.data);
-        console.log(response.data);
-        console.log("all is fine");
-      } catch (error) {
-        console.error("Error fetching previous results:", error);
-        // Handle error appropriately (e.g., show an error message to the user)
-      }
-    };
-
-    fetchPrevResults();
-  }, []);
+  const [allresult, setallresult] = React.useState([]);
   async function logout() {
     try {
       await axios.post("/logout");
@@ -100,14 +83,26 @@ export default function dashboard(props) {
   };
 
   const themeClass = isDarkMode ? "dark-theme" : "light-theme";
-
+  async function getallresults(ev) {
+    ev.preventDefault();
+    try {
+      let abc = await axios.get("/check");
+      //   setallresult(abc);
+      console.log(abc);
+      //   console.log(abc[abc.length - 1]);
+    } catch (e) {
+      console.log("Eroor is ", e.message);
+    }
+  }
+  React.useEffect(() => {
+    // getallresults();
+  }, []);
   return (
     <div className={`dashboardpage ${themeClass}`}>
       <section id="sidebar">
         <a href="#" className={`brand ${themeClass}`}>
           <i className="bx bxs-brain" />
           <span className="text1">OptimisticAir</span>
-          {/* <button onClick={getallresults}>console results</button> */}
         </a>
         <ul className="side-menu top">
           <li className="active">
@@ -179,6 +174,7 @@ export default function dashboard(props) {
           <div className="head-title" id="dash">
             <div className="left">
               <h1>Dashboard</h1>
+              <button onClick={getallresults}>console results</button>
               <ul className="breadcrumb">
                 <li>
                   <a href="#">Dashboard</a>

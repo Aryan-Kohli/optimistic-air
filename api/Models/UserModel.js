@@ -6,7 +6,13 @@ const UserSchema = new mongoose.Schema({
     location :String,
     phoneno :String,
     password : String,
-    age :Number
+    age :Number,
+    prevresults: [
+        {
+            audio : Number,
+            video : []
+        }
+    ]
 })
 const UserModel = mongoose.model('User',UserSchema);
 module.exports=UserModel;

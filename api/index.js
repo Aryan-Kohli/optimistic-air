@@ -48,6 +48,7 @@ app.post('/register',async (req,resp)=>{
         phoneno,
         password : bcrypt.hashSync(password,bcryptsalt) ,
         age,
+        prevresults:[]
     })
     resp.json(userdoc);
 })
@@ -62,7 +63,7 @@ app.post('/login',async (req,resp)=>{
         const comp_pass = bcrypt.compareSync(password,userdoc.password);
         if(comp_pass)
         {
-            jwt.sign({firstname:userdoc.firstname,lastname:userdoc.lastname,email:userdoc.email,location:userdoc.location,id:userdoc._id},jwtsecret,{},(err,token)=>{
+            jwt.sign({firstname:userdoc.firstname,lastname:userdoc.lastname,email:userdoc.email,location:userdoc.location,id:userdoc._id,prevresults:[]},jwtsecret,{},(err,token)=>{
                 if(err) throw err;
                 resp.cookie('token',token).json(userdoc);
             })
@@ -80,6 +81,11 @@ catch(e)
       console.error(err);
     resp.status(500).json("Internal Server Error");
 }
+})
+app.get('/check',(req,resp)=>{
+    const {token}=req.cookies;
+    console.log("all god");
+    resp.json("all good");
 })
 app.get('/profile',(req,resp)=>{
     const {token}=req.cookies;
@@ -99,6 +105,54 @@ app.get('/profile',(req,resp)=>{
 app.post('/logout',(req,resp)=>{
     resp.cookie('token','').json(true);
 })
+app.put('/upload', async (req, resp) => {
+    console.log("at backend upload function");
+  const { token } = req.cookies;
+  if (token) {
+    const { emotiondata, percentage } = req.body;
+    jwt.verify(token, jwtsecret, {}, async (err, user) => {
+      if (err) throw err;
+      const Userdoc = await User.findById(user.id);
+        console.log("evjk");
+      
+        // Create a new result object using the data
+        const newResult = {
+            audio: percentage,
+            video: emotiondata,
+        };
+        console.log("evjk2");
+
+      // Add the new result object to the prevresults array
+      Userdoc.prevresults.push(newResult);
+          console.log("evjk3");
+      // Save the user document with the updated prevresults array
+      await Userdoc.save();
+      console.log("result uploaded");
+      resp.json("Results uploaded successfully");
+    });
+} else {
+      console.log("result not uploaded");
+    resp.json("Unable to upload results");
+  }
+});
+app.get('/allresults',(req,resp)=>{
+    console.log("At all results function");
+    const {token} = req.cookies;
+    if(token)
+    {
+        jwt.verify(token, jwtsecret, {}, async (err, user) => {
+      if (err) throw err;
+      const Userdoc = await User.findById(user.id);
+       const prevresults = Userdoc.prevresults;
+       console.log("sende sucessfully prev results");
+       resp.json(prevresults);
+    });
+    }
+    else{
+        resp.send([]);
+    }
+})
+
 app.listen(process.env.PORT,(req,resp)=>{
     console.log("Successfuly  hosted on port " , process.env.PORT);
 });
