@@ -69,10 +69,12 @@ export default function loginpage(props) {
         <div className="rhombus"></div>
         <div className="rhombus3" />
         <div className="box1">
-          <button onClick={gotohome} className="homebtn">
-            <i className="bx bx-home-alt-2" />
-            Home
-          </button>
+          <Link to="/" className="">
+            <button onClick={gotohome} className="homebtn">
+              <i className="bx bx-home-alt-2" />
+              Home
+            </button>
+          </Link>
           <h1 className="bold">Hi There👋🏻</h1>
           <h3>Welcome onboard !!</h3>
           <br />
