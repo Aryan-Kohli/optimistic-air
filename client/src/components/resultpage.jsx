@@ -5,11 +5,27 @@ import "../css/resultpage2.css";
 import axios from "axios";
 import Emotionchart from "./emotionChart";
 import WordsChart from "./Wordschart";
+import Cookies from "js-cookie";
 // imort {Link}
 export default function resultpage(props) {
-  if (props.login == false) {
-    return <Navigate to="/login" replace={true} />;
-  }
+  // if (props.login == false) {
+  //   return <Navigate to="/login" replace={true} />;
+  // }
+  const [user, setUser] = React.useState();
+  const [token, setToken] = React.useState();
+  useEffect(() => {
+    function fetchdata() {
+      const user = Cookies.get("user");
+      if (!user) return <Navigate to="/login" replace={true} />;
+      const parsed_user = JSON.parse(user);
+      const token = Cookies.get("token");
+      if (!token) return <Navigate to="/login" replace={true} />;
+      const parsed_token = JSON.parse(token);
+      setToken(parsed_token);
+      setUser(parsed_user);
+    }
+    fetchdata();
+  }, []);
   const emotiondata = props.data.allemotions_array;
   function seeEmotion() {
     // console.log("fetvusbklz");
@@ -35,12 +51,23 @@ export default function resultpage(props) {
       today.getDate();
 
     try {
-      await axios.put("/upload", {
-        emotiondata,
-        percentage,
-        time,
-        date,
-      });
+      const response = await axios.put(
+        "/upload",
+        {
+          emotiondata,
+          percentage,
+          time,
+          date,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      Cookies.set("user", JSON.stringify(response.data));
+      alert("Result has been saved");
+      return <Navigate to="/dashboard" replace={true} />;
     } catch (error) {
       console.error("Error uploading data:", error);
       alert("Unable to upload");

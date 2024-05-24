@@ -7,7 +7,7 @@ import Loginpage from "./components/loginpage";
 import Dashboard from "./components/dashboard";
 import Registerpage from "./components/registerpage";
 import { UserContextProvider } from "./UserContext";
-
+// import { NavigationContainer } from "@react-navigation/native";
 import axios from "axios";
 axios.defaults.baseURL = "https://optimistic-air-backend.onrender.com";
 // axios.defaults.baseURL = "https://optimistic-air.vercel.app";
@@ -35,6 +35,7 @@ export default function App() {
   return (
     <div>
       <UserContextProvider>
+        {/* <NavigationContainer> */}
         <Routes>
           <Route path={"/"} element={<Indexpage login={login} />} />
           {/* <Route path={"/abc"} login={login}element={<Abc />} /> */}
@@ -71,6 +72,7 @@ export default function App() {
           />
           <Route path="/register" element={<Registerpage />} />
         </Routes>
+        {/* </NavigationContainer> */}
       </UserContextProvider>
     </div>
   );

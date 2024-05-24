@@ -1,29 +1,51 @@
 import React from "react";
 import "../css/loginpage.css";
 import axios from "axios";
-import { useContext } from "react";
-import { UserContext } from "../UserContext";
 import { Link, Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
 export default function loginpage(props) {
   const [email, setemail] = React.useState();
   const [password, setpassword] = React.useState();
-  const { setuser } = useContext(UserContext);
   const [redirect, setRedirect] = React.useState(false);
   const [passtype, setpasstype] = React.useState("password");
   function change() {
     if (passtype == "password") setpasstype("text");
     else setpasstype("password");
   }
+  async function guestLogin() {
+    try {
+      const response = await axios.post("/login", {
+        email: "JohnDoe@gmail.com",
+        password: "password",
+      });
+      // console.log(response.data);
+      props.setlogin(true);
+      // console.log(data);
+      Cookies.set("token", JSON.stringify(response.data.token));
+      Cookies.set("user", JSON.stringify(response.data.userdoc));
+      setRedirect(true);
+    } catch (e) {
+      // alert("there is some error in backend");
+      if (e.response.status === 402) alert("Wrong  password");
+      else if (e.response.status === 401) alert("User Not Registered");
+      else alert("there is some error in backend");
+    }
+  }
   async function loginUser(ev) {
     ev.preventDefault();
     try {
-      const { data } = await axios.post("/login", { email, password });
+      const response = await axios.post("/login", { email, password });
+      // console.log(response.data);
       props.setlogin(true);
-      console.log(data);
-      setuser(data);
+      // console.log(data);
+      Cookies.set("token", JSON.stringify(response.data.token));
+      Cookies.set("user", JSON.stringify(response.data.userdoc));
       setRedirect(true);
     } catch (e) {
-      alert("there is some error in backend");
+      // alert("there is some error in backend");
+      if (e.response.status === 402) alert("Wrong  password");
+      else if (e.response.status === 401) alert("User Not Registered");
+      else alert("there is some error in backend");
     }
   }
   if (redirect) {
@@ -90,16 +112,17 @@ export default function loginpage(props) {
               />
               <label>Password</label>
             </div>
-            <div className="remember-forgot">
+            {/* <div className="remember-forgot">
               <label>
                 <input type="checkbox" />
                 Remember me
               </label>
               <a href="#">Forgot Password?</a>
-            </div>
+            </div> */}
             <button type="submit" className="submit" id="but">
               Login
             </button>
+
             <Link to="/register" className="register-link">
               <p className="margin">
                 Dont't have an account? <a href="#">Register</a>
@@ -109,6 +132,9 @@ export default function loginpage(props) {
             {/* <p className="goo">
                 SignUp With <a href="#">Google</a>
               </p> */}
+            <button onClick={guestLogin} className="submit mt-4" id="but">
+              Guest Login
+            </button>
           </form>
         </div>
         <div className="rhombus2"></div>

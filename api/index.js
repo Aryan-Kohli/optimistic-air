@@ -19,10 +19,11 @@ app.use(cors({
     credentials: true,
     origin:  "https://optimistic-air.netlify.app"
     // origin: "http://localhost:5173"
+    // origin: "*"
 }));
 app.use((req, res, next) => {
-    // res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
-    res.header('Access-Control-Allow-Origin', 'https://optimistic-air.netlify.app');
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+    // res.header('Access-Control-Allow-Origin', 'https://optimistic-air.netlify.app');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Access-Control-Allow-Credentials', true);
@@ -45,7 +46,8 @@ app.post('/register',async (req,resp)=>{
         email,
         location,
         phoneno,
-        password : bcrypt.hashSync(password,bcryptsalt) ,
+        password: password,
+        // password : bcrypt.hashSync(password,bcryptsalt) ,
         age,
         prevresults:[]
     })
@@ -57,8 +59,9 @@ app.post('/login', async (req, resp) => {
     const userdoc = await User.findOne({ email: req.body.email });
     console.log(req.body);
     if (userdoc) {
-      const comp_pass = bcrypt.compareSync(password, userdoc.password);
-      if (comp_pass) {
+      // const comp_pass = bcrypt.compareSync(password, userdoc.password);
+      const comp_pass = password === userdoc.password;
+      if (password === userdoc.password) {
         jwt.sign(
           {
             firstname: userdoc.firstname,
@@ -72,14 +75,16 @@ app.post('/login', async (req, resp) => {
           (err, token) => {
             if (err) throw err;
             console.log("token is ",token);
-            resp.cookie('token', token, {}).json(userdoc);
+            resp.status(200).json({token:token,userdoc:userdoc});
+            // resp.cookie('token', token, {}).json(userdoc);
           }
         );
       } else {
-        resp.status(400).json("Password is wrong");
+        console.log(userdoc.password, password);
+        resp.status(402).json("Password is wrong");
       }
     } else {
-      resp.status(400).json("Register first");
+      resp.status(401).json("User Not Registered");
     }
   } catch (e) {
     console.error(e);
@@ -142,7 +147,7 @@ app.post('/logout',(req,resp)=>{
 })
 app.put('/upload', async (req, resp) => {
     console.log("at backend upload function");
-  const { token } = req.cookies;
+  const token = req.headers.authorization.split(" ")[1];
   if (token) {
     const { emotiondata, percentage , time , date } = req.body;
     jwt.verify(token, jwtsecret, {}, async (err, user) => {
@@ -165,7 +170,7 @@ app.put('/upload', async (req, resp) => {
       // Save the user document with the updated prevresults array
       await Userdoc.save();
       console.log("result uploaded");
-      resp.json("Results uploaded successfully");
+      resp.json(Userdoc);
     });
 } else {
       console.log("result not uploaded");

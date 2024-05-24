@@ -787,7 +787,7 @@ html {
         .dashboardpage #content nav form.show~.profile {
             display: none;
         }
-
+        
         .dashboardpage #content main .box-info {
             grid-template-columns: 1fr;
         }

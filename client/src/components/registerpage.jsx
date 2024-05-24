@@ -9,11 +9,73 @@ export default function registerpage() {
   const [location, setLocation] = useState("");
   const [phoneno, setPhoneno] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmpassword, setconfirmpassword] = useState("");
   const [age, setAge] = useState("");
   const [gotologin, setgotologin] = useState(false);
-
+  const [passtype, setpasstype] = React.useState("password");
+  function change() {
+    if (passtype == "password") setpasstype("text");
+    else setpasstype("password");
+  }
   async function registerUser(ev) {
     ev.preventDefault();
+    if (password !== confirmpassword) {
+      alert("password and confirm password does not match");
+      return;
+    }
+    if (!firstname) {
+      alert("Enter First Name");
+      return;
+    }
+    if (!lastname) {
+      alert("Enter Last Name");
+      return;
+    }
+    if (!email) {
+      alert("Enter Email");
+      return;
+    }
+    if (!location) {
+      alert("Enter Location");
+      return;
+    }
+    if (!phoneno) {
+      alert("Enter Phone Number");
+      return;
+    }
+    if (!password) {
+      alert("Enter Password");
+      return;
+    }
+    if (!age) {
+      alert("Enter Age");
+      return;
+    }
+    const namePattern = /^[a-zA-Z]+([ '-][a-zA-Z]+)*$/;
+    if (!namePattern.test(firstname)) {
+      alert("Enter valid First Name");
+      return;
+    }
+    if (!namePattern.test(lastname)) {
+      alert("Enter valid Last Name");
+      return;
+    }
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailPattern.test(email)) {
+      alert("Enter valid Email");
+      return;
+    }
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(phoneno)) {
+      alert("Enter valid Phone Number");
+      return;
+    }
+    const agePattern = /^[0-9]{2}$/;
+    if (!agePattern.test(age)) {
+      alert("Enter valid Age");
+      return;
+    }
+
     try {
       await axios.post("/register", {
         firstname,
@@ -81,13 +143,30 @@ export default function registerpage() {
               />
               <label>Phone Number</label>
             </div>
+
             <div className="input1-box">
+              <span className="icon" onClick={change}>
+                {passtype == "password" ? (
+                  <ion-icon name="eye-off" />
+                ) : (
+                  <ion-icon name="eye" />
+                )}
+              </span>
               <input
-                type="password"
-                onChange={(ev) => setPassword(ev.target.value)}
+                type={passtype}
+                id="pass"
+                onChange={(event) => setPassword(event.target.value)}
                 required=""
               />
               <label>Password</label>
+            </div>
+            <div className="input1-box">
+              <input
+                type="password"
+                onChange={(ev) => setconfirmpassword(ev.target.value)}
+                required=""
+              />
+              <label>Confirm Password</label>
             </div>
             <div className="input1-box">
               <input

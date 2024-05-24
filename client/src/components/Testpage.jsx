@@ -7,10 +7,18 @@ import "../css/testpage2.css";
 import { Link, Navigate } from "react-router-dom";
 import React, { useState, useRef, useEffect } from "react";
 import allquestion from "../questions.js";
+import Cookies from "js-cookie";
 function Testpage(props) {
-  if (props.login == false) {
-    return <Navigate to="/login" replace={true} />;
-  }
+  // if (props.login == false) {
+  //   return <Navigate to="/login" replace={true} />;
+  // }
+  const [user, setUser] = useState();
+  useEffect(() => {
+    const user = Cookies.get("user");
+    if (!user) return <Navigate to="/login" replace={true} />;
+    const parsed_user = JSON.parse(user);
+    setUser(user);
+  }, []);
   const [textToCopy, setTextToCopy] = useState();
   const [lang, Setlang] = useState("");
   const [current_question, setQuestion] = useState("Question will appear here");

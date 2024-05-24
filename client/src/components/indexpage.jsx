@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/indexpage.css";
 import pic1 from "../pics/img1.png";
 import pic2 from "../pics/cartoon.png";
-import { useContext } from "react";
-import { UserContext } from "../UserContext";
+import Cookies from "js-cookie";
 export default function indexpage(props) {
-  const { user } = useContext(UserContext);
+  const [user, setuser] = React.useState(null);
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      setuser(JSON.parse(Cookies.get("user")));
+    }
+  }, []);
   return (
     <>
       <div className="indexpage">
