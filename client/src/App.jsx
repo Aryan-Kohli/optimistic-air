@@ -9,10 +9,11 @@ import Registerpage from "./components/registerpage";
 import { UserContextProvider } from "./UserContext";
 // import { NavigationContainer } from "@react-navigation/native";
 import axios from "axios";
-axios.defaults.baseURL = "https://optimistic-air-backend.onrender.com";
 // axios.defaults.baseURL = "https://optimistic-air.vercel.app";
 // axios.defaults.baseURL = "http://localhost:4000/";
+axios.defaults.baseURL = "https://optimistic-air-backend.onrender.com";
 axios.defaults.withCredentials = true;
+axios.defaults.headers.post["Content-Type"] = "application/json";
 export default function App() {
   const [emotions, setemotions] = React.useState("");
   function func(abc) {
